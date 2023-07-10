@@ -12,16 +12,6 @@ class Todo extends Equatable {
   List<Object> get props => [task, id];
 }
 
-class TodoData extends Equatable {
-  List<Todos>? todos;
-  int? total;
-  int? skip;
-  int? limit;
-
-  @override
-  List<Object?> get props => [todos, total, skip, limit];
-}
-
 class Todos extends Equatable {
   int? id;
   String? todo;

@@ -1,15 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_todo_app_clean_code/core/error/failures.dart';
 import 'package:injectable/injectable.dart';
-import '../../../core/error/exceptions.dart';
 import '../../models/todo/todo_model.dart';
 import '../../../domain/entities/todo/todo.dart';
 
 abstract class TodoLocalDataSource {
-  ///Throws [DataBaseException] if no data found
+  ///Throws [FirebaseException] if no data found
   Future<TodoModel> getTodo(int id);
 
   Future<List<TodoModel>> getAllTodo();
 
   Future<Todo> addTodo(String task);
+  Future<void> getDeleteTodo(String id);
 }
 
 @LazySingleton(as: TodoLocalDataSource)
@@ -31,27 +33,35 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   Future<TodoModel> getTodo(int id) {
     final TodoModel todoModel = TodoModel(task: 'task2', id: '1');
     // todoModelList.firstWhere((element) => element.id == id.toString());
+    // ignore: unnecessary_null_comparison
     if (todoModel != null) {
       return Future.delayed(const Duration(seconds: 1), () => todoModel);
     } else {
-      throw DataBaseException();
+      throw const FirebaseFailure();
     }
     // return Future.value(TodoModel.fromJson({}));
   }
 
   @override
   Future<List<TodoModel>> getAllTodo() {
-    throw DataBaseException();
-    // return Future.delayed(const Duration(seconds: 1), () => todoModelList);
+    // throw FirebaseException();
+    return Future.delayed(const Duration(seconds: 1), () => todoModelList);
   }
 
   @override
   Future<Todo> addTodo(String task) {
-    throw DataBaseException();
+    throw const FirebaseFailure();
     // return Future.delayed(const Duration(seconds: 1), () {
     //   final todo = TodoModel(task: task, id: todoModelList.length);
     //   todoModelList.add(todo);
     //   return todo;
     // });
+  }
+
+  @override
+  Future<void> getDeleteTodo(String id) {
+    return Future.delayed(const Duration(seconds: 1), () {
+      return;
+    });
   }
 }

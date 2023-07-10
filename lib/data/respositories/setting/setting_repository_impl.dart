@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import '../../../core/error/exceptions.dart';
@@ -16,8 +17,8 @@ class SettingRepositoryImpl implements SettingRepository {
   Future<Either<Failure, Setting>> getSetting() async {
     try {
       return Right(await settingLocalDataSource.getSetting());
-    } on DataBaseException {
-      return Left(DataBaseFailure());
+    } on FirebaseException {
+      return Left(FirebaseFailure());
     }
   }
 
@@ -27,8 +28,8 @@ class SettingRepositoryImpl implements SettingRepository {
     try {
       return Right(
           await settingLocalDataSource.changeAppThemeMode(appThemeMode));
-    } on DataBaseException {
-      return Left(DataBaseFailure());
+    } on FirebaseException {
+      return Left(FirebaseFailure());
     }
   }
 }

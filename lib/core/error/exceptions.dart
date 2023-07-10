@@ -1,1 +1,1 @@
-class DataBaseException implements Exception {}
+

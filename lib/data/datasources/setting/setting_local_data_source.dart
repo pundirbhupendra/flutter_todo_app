@@ -4,7 +4,7 @@ import '../../models/setting/setting_model.dart';
 import '../../../domain/entities/setting/setting.dart';
 
 abstract class SettingLocalDataSource {
-  ///Throws [DataBaseException] if no data found
+  ///Throws [FirebaseException] if no data found
   Future<Setting> getSetting();
 
   Future<void> changeAppThemeMode(AppThemeMode appThemeMode);

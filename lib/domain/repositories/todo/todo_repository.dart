@@ -8,7 +8,7 @@ abstract class TodoRepository {
 
   Future<Either<Failure, List<TodoModel>>> getAllTodo();
 
-  Future<Either<Failure, Todos>> addTodo(String task);
+  Future<Either<Failure, void>> addTodo(String task);
 
   Future<Either<Failure, void>> getDeleteTodo(String id);
 }

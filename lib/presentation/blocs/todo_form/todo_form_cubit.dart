@@ -20,7 +20,7 @@ class TodoFormCubit extends Cubit<TodoFormState> {
         await addTodo(Params(task: task, desc: desc));
     todoAddedFailedOrSuccess.fold(
       (failure) => emit(state.copyWith(
-          status: ApiStatus.failure, message: failure.properties.first)),
+          status: ApiStatus.failure, message: failure.errorMessage)),
       (data) {
         return emit(state.copyWith(status: ApiStatus.success));
       },

@@ -15,9 +15,10 @@ part 'todo_state.dart';
 class TodoCubit extends Cubit<TodoState> {
   late final GetAllTodo getAllTodo;
   late final DeleteTodo deleteTodo;
-  TodoCubit() : super(const TodoState()) {
-    getAllTodo = getIt<GetAllTodo>();
-    deleteTodo = getIt<DeleteTodo>();
+  TodoCubit({GetAllTodo? getAllTodo, DeleteTodo? deleteTodo})
+      : super(const TodoState()) {
+    getAllTodo = getAllTodo ?? getIt<GetAllTodo>();
+    deleteTodo = deleteTodo ?? getIt<DeleteTodo>();
   }
 
   void getAllTodoData() async {

@@ -16,9 +16,7 @@ import 'injection_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   configureDependencies();
 
   runApp(MyApp());
@@ -40,10 +38,6 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, SettingState settingState) {
           if (settingState is SettingLoadingState ||
               settingState is SettingInitial) {
-            // return MaterialApp(
-            //   theme: lightThemeData,
-            //   home: LoadingWidget(),
-            // );
             return MaterialApp(
               title: 'DoneIt',
               theme: lightThemeData,
@@ -76,8 +70,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//flutter packages pub run build_runner build
-//flutter packages pub run build_runner watch
 
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
@@ -106,3 +98,5 @@ class DefaultFirebaseOptions {
     //  storageBucket: 'flutterfire-e2e-tests.appspot.com',
   );
 }
+//flutter packages pub run build_runner build
+//flutter packages pub run build_runner watch

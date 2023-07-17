@@ -37,7 +37,7 @@ void main() {
       expect(usersCubit.state.status, ApiStatus.initial);
     },
   );
-  group('getUsers', () {
+  group('gettodolist', () {
     blocTest<TodoCubit, TodoState>(
       'emits [loading, failure] when exception is thrown',
       setUp: () {

@@ -2,6 +2,13 @@ part of 'todo_form_cubit.dart';
 
 enum ApiStatus { initial, loading, success, failure }
 
+extension ApiStatusX on ApiStatus {
+  bool get isInitial => this == ApiStatus.initial;
+  bool get isLoading => this == ApiStatus.loading;
+  bool get isSuccess => this == ApiStatus.success;
+  bool get isFailure => this == ApiStatus.failure;
+}
+
 class TodoFormState extends Equatable {
   const TodoFormState({
     this.status = ApiStatus.initial,

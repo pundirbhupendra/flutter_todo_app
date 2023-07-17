@@ -1,11 +1,8 @@
 import 'dart:async';
-
-import 'package:bloc/bloc.dart';
-import 'package:flutter_todo_app_clean_code/domain/repositories/setting/setting_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_app_clean_code/injection_container.dart';
 import 'package:injectable/injectable.dart';
 import '../../../core/usecases/usecase.dart';
-import '../../../core/utils/injectable_module.dart';
 import '../../../domain/entities/setting/setting.dart';
 import '../../../domain/usecases/setting/change_app_theme_mode.dart';
 import '../../../domain/usecases/setting/get_setting.dart';
@@ -34,11 +31,11 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
       final getSettingFailedOrSuccess = await getSetting(NoParams());
       yield getSettingFailedOrSuccess.fold(
         (l) {
-          print("SettingLoadFailState : $l");
+          //  print("SettingLoadFailState : $l");
           return SettingLoadFailState();
         },
         (r) {
-          print("SettingLoadSuccessState : $r");
+          //  print("SettingLoadSuccessState : $r");
           return SettingLoadSuccessState(setting: r);
         },
       );

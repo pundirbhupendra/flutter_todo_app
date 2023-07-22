@@ -21,9 +21,10 @@ class TodoCubit extends Cubit<TodoState> {
     deleteTodo = deleteTodo ?? getIt<DeleteTodo>();
   }
 
-  void getAllTodoData() async {
+  void getAllTodoData({GetAllTodo? ggetAllTodo}) async {
+    final getTodod = ggetAllTodo ?? getAllTodo;
     emit(state.copyWith(status: ApiStatus.loading));
-    final todoAddedFailedOrSuccess = await getAllTodo(NoParams());
+    final todoAddedFailedOrSuccess = await getTodod(NoParams());
     todoAddedFailedOrSuccess.fold(
       (failure) => emit(state.copyWith(
           status: ApiStatus.failure, message: failure.errorMessage)),
